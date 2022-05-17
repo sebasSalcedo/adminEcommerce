@@ -1,0 +1,104 @@
+<!-- Page title-->
+<div class="border-bottom mt-2 mb-5">
+  <h1 class="mt-2 mt-md-4 mb-3">Clientes</h1>
+  <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+    <p class="text-muted">Modulo de registro de un nuevo cliente.</p>
+  </div>
+</div>
+
+<div class="card box-shadow-sm">
+  <form [formGroup]="registerClient">
+    <div class="card-header">
+      <h5 style="margin-bottom: 0px">Registro de cliente</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 form-group">
+          <label for="validationCustom01" class="form-label">Nombres</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Ingresa los nombres"
+            formControlName="nombres"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="validationCustom01" class="form-label">Apellidos</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Ingresa los apellidos"
+            formControlName="apellidos"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="validationCustom01" class="form-label"
+            >Correo electrónico</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Ingresa tu email"
+            formControlName="email"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="col-md-4 form-group">
+          <label for="validationCustom01" class="form-label">Celular</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Ingresa tu Celular"
+            formControlName="telefono"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="validationCustom01" class="form-label"
+            >Fecha nacimiento</label
+          >
+          <input
+            class="form-control"
+            type="date"
+            placeholder="Ingresa tu fecha de nacimiento"
+            formControlName="f_nacimiento"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="validationCustom01" class="form-label"
+            >No. Identificación</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Ej: 1632310110"
+            formControlName="dni"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Genero</label>
+          <select class="form-control custom-select" id="">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary mr-3">Crear cliente</button>
+      <button class="btn btn-warning">Regresar</button>
+    </div>
+  </form>
+</div>

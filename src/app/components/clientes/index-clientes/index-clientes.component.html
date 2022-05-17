@@ -1,0 +1,88 @@
+<div class="border-bottom mt-2 mb-5">
+    <h1 class="mt-2 mt-md-4 mb-3 ">Clientes</h1>
+    <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+      <p class="text-muted">Este módulo lista todos los clientes de la tienda.</p>
+      <p class="font-size-sm font-weight-medium pl-md-4">
+        <a class="text-nowrap" [routerLink]="['/panel/clientes/registro']" routerLinkActive="router-link-active">Registrar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a></p>
+    </div>
+  </div>
+
+  <div class="card box-shadow-sm">
+        <div class="card-header">
+            <h5 style="margin-bottom: 0px;">Filtro de clientes</h5>
+        </div>
+        <div class="card-header">
+            <form class="form-inline pt-2" #f="ngForm" novalidate >
+           
+                <label class="sr-only" for="inline-form-input-name">Apellidos</label>
+                <input class="form-control mb-3 mr-sm-4" type="text" id="inline-form-input-name" (keyup)="filtro('apellidos')" name="filter_surname" [(ngModel)]="filter_surname" placeholder="apellidos">
+                <label class="sr-only" for="inline-form-input-username">Correo</label>
+                <div class="input-group mb-3 mr-sm-4">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input class="form-control" type="text" id="inline-form-input-username" name="filter_email" (keyup)="filtro('email')" [(ngModel)]="filter_email" placeholder="Digita el correo del cliente">
+                </div>
+            
+               
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Nombres</th>
+                      <th>Apellidos</th>
+                      <th>Telefono</th>
+                      <th>Correo Electronico</th>
+                      <th></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let client of list_client | slice: (page-1)* pageSize : ( page -1 ) * pageSize + pageSize; let i = index">
+                      <td>
+                        {{i +1 }}
+                      </td> 
+                      <td>
+                        {{client.nombres}}
+                      </td>
+                      <td>
+                        {{client.apellidos}}
+                      </td>
+                      <td>
+                        {{client.telefono}}
+                      </td>
+                      <td>
+                        {{client.email}}
+                      </td>
+                      <td>
+                        <div class="btn-group dropdown">
+                            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              acciones
+                            </button>
+                            <div class="dropdown-menu">
+                              
+                              <button class="dropdown-item edit"> <i class="fa-solid fa-user-pen"></i> Editar Cliente</button>
+                              <div class="dropdown-divider"></div>
+                              <button href="#" class="dropdown-item delete" > <i class="fa-solid fa-trash-can"></i> Eliminar Cliente </button>
+                            </div>
+                          </div>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+           <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="list_client.length"
+
+           ></ngb-pagination>
+        </div>
+  </div>  

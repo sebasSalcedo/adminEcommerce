@@ -7,7 +7,7 @@
 </div>
 
 <div class="card box-shadow-sm">
-  <form [formGroup]="registerClient">
+  <form #formlogin [formGroup]="registerClient">
     <div class="card-header">
       <h5 style="margin-bottom: 0px">Registro de cliente</h5>
     </div>
@@ -18,11 +18,16 @@
           <input
             class="form-control"
             type="text"
+            id="nombres"
+            name="nombres"
             placeholder="Ingresa los nombres"
             formControlName="nombres"
             autocomplete="off"
             required
           />
+
+
+
         </div>
         <div class="col-md-4 form-group">
           <label for="validationCustom01" class="form-label">Apellidos</label>
@@ -89,7 +94,7 @@
 
         <div class="col-md-4">
           <label for="validationCustom01" class="form-label">Genero</label>
-          <select class="form-control custom-select" id="">
+          <select class="form-control custom-select" id=""  formControlName="genero">
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
           </select>
@@ -97,8 +102,18 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-primary mr-3">Crear cliente</button>
-      <button class="btn btn-warning">Regresar</button>
+
+      <ng-container *ngIf="idData == ' '; else elseTemplate">
+      <button class="btn btn-primary mr-3" type="submit" [disabled]="!registerClient.valid" (click)="register()">Crear cliente</button>
+        
+      </ng-container>
+      <ng-template #elseTemplate>
+      <button class="btn btn-success mr-3" type="submit" [disabled]="!registerClient.valid" (click)="editar()">Editar cliente</button>
+        
+      </ng-template>
+      
+
+      <a class="btn btn-warning" [routerLink]="['/panel/clientes']" routerLinkActive="router-link-active" >Regresar</a>
     </div>
   </form>
 </div>

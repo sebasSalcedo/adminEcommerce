@@ -15,6 +15,7 @@ export class GlobalService {
 
   constructor(private _http: HttpClient) {
     this.gettoken();
+
     this.url = environment.urlBack;
 
     this.headers = new HttpHeaders()
@@ -30,8 +31,6 @@ export class GlobalService {
    */
 
   login(user: any, gettoken = null): Observable<any> {
-    let params = JSON.stringify(user);
-
     return this._http.post(this.url + 'admin_login', user, {
       headers: this.headers,
     });
@@ -97,6 +96,42 @@ export class GlobalService {
     }
 
     return this._http.get(this.url + '/filter_client/' + tipo + '/' + filtro, {
+      headers: this.headers,
+    });
+  }
+
+  /**
+   *
+   * @param data
+   * @param url
+   * @returns
+   */
+  public registerData(data: any, url: string): Observable<any> {
+    return this._http.post(this.url + url, data, {
+      headers: this.headers,
+    });
+  }
+
+  /**
+   *
+   * @param data
+   * @param url
+   * @returns
+   */
+  public updateData(data: any, url: string): Observable<any> {
+    return this._http.put(this.url + url, data, { headers: this.headers });
+  }
+
+  /**
+   * 
+   * @param id
+   * @param url
+   * @returns
+   */
+  public deleteData(id: string, url: string): Observable<any> {
+    console.log(this.url + url + '/' + id);
+
+    return this._http.delete(this.url + url + '/' + id, {
       headers: this.headers,
     });
   }

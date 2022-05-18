@@ -1,8 +1,11 @@
-import { CreateClientComponent } from './create-client/create-client.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IndexClientesComponent } from './index-clientes/index-clientes.component';
 import { AdminGuard } from '../../guards/admin.guard';
+
+import { IndexClientesComponent } from './index-clientes/index-clientes.component';
+import { CreateClientComponent } from './create-client/create-client.component';
+
+
 
 const routes: Routes = [
 
@@ -10,6 +13,8 @@ const routes: Routes = [
 
         {path: 'clientes', component:IndexClientesComponent, canActivate:[AdminGuard]},
         {path: 'clientes/registro', component:CreateClientComponent, canActivate:[AdminGuard]},
+        {path: 'clientes/editar/:id', component:CreateClientComponent, canActivate:[AdminGuard]},
+
 
 
     ]}

@@ -65,9 +65,35 @@
                             </button>
                             <div class="dropdown-menu">
                               
-                              <button class="dropdown-item edit"> <i class="fa-solid fa-user-pen"></i> Editar Cliente</button>
+                              <a class="dropdown-item edit" [routerLink]="['/panel/clientes/editar',client._id]" routerLinkActive="router-link-active" > <i class="fa-solid fa-user-pen"></i> Editar Cliente</a>
                               <div class="dropdown-divider"></div>
-                              <button href="#" class="dropdown-item delete" > <i class="fa-solid fa-trash-can"></i> Eliminar Cliente </button>
+                              <!--data-toggle="modal" data-bs-target="#delete" [attr.data-target]="'#delete-'+client._id" -->
+                              <button  class="dropdown-item delete"  style="cursor: pointer"  (click)="deleteCliente(client._id, client.nombres,client.apellidos)" > <i class="fa-solid fa-trash-can"></i> Eliminar Cliente </button>
+                            </div>
+                          </div>
+
+                          <div class="modal fade" tabindex="-1" id="delete-{{client._id}}"  style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Eliminar - {{client.nombres}} {{client.apellidos}} </h5>
+                                  <button type="button"  data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark-large"></i></button>
+                                </div>
+                                <div class="modal-body">
+                                  <p class="fs-sm"> Estas seguro de eliminar al cliente</p>
+
+                                  
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                  <div class="btn-group mb-2" role="group" aria-label="Delete settings">
+                                    <button type="button" class="btn btn-translucent-danger btn-icon" data-bs-dismiss="modal">
+                                      <i class="ci-cross"></i>Eliminar
+                                    </button>
+                                  </div>
+                                
+                                </div>
+                              </div>
                             </div>
                           </div>
                       </td>
@@ -85,4 +111,10 @@
 
            ></ngb-pagination>
         </div>
+
+
+
+     
+
+       
   </div>  
